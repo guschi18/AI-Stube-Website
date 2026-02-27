@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #111111;
+
+  /* Brand Colors derived from AI Stube Banner (Orange/Gold/Green) */
+  --primary: #ea580c;
+  /* Warm Orange (Sofa) */
+  --primary-hover: #c2410c;
+  --accent: #5e7e60;
+  /* Muted Green (Wall) */
+  --gold: #f59e0b;
+  /* Glowing Brain (Gold) */
+
+  /* UI Colors */
+  --card: #ffffff;
+  --card-border: #e5e5e5;
+  --muted: #f5f5f5;
+  --muted-foreground: #525252;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Utilities for Glassmorphism & Soft Shadows */
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@utility soft-shadow {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+/* ── Logo Marquee ── */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 18s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
