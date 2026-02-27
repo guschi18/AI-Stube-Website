@@ -24,11 +24,11 @@ export default function Hero() {
             {/* ── Spline: absolute inset-0, z-0, volle pointer-events ──
                 ✅ KEIN pointerEvents: none → Spline empfängt alle Maus-Events
                 ✅ KEIN mix-blend-mode → Roboter behält seine Originalfarben */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center">
-                <div style={{ width: "75%", height: "75%" }}>
+            <div className="absolute inset-0 z-0 flex items-end justify-center">
+                <div className="w-full lg:w-[80%] h-[85%] md:h-[90%]">
                     <SplineScene
                         scene="https://prod.spline.design/OA2pS2iEoa9BG85x/scene.splinecode"
-                        className="w-full h-full"
+                        className="w-full h-full object-cover"
                     />
                 </div>
             </div>
